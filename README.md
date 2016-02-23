@@ -54,3 +54,20 @@ this script to enter bookmarks data in a simple format.
   ./booky.sh your_pdf_file.pdf your_text_file.txt
   ```
 This creats a new pdf file `your_pdf_file_new.pdf` with your bookmarks.
+
+This is going to work in *nix systems if instead you are on a Windows machine. Then first install `python3` and `pdftk` just use the `booky.py` file in the repo to convert `bkmrks.txt` to `pdftk` compatible format
+
+    python3 booky.py < bkmrks.txt > output.txt
+
+use the export command to generate a dumped data file.
+
+```
+pdftk C:\Users\Sid\Desktop\doc.pdf dump_data output C:\Users\Sid\Desktop\doc_data.txt
+```
+Remove the previous bookmarks from that file and insert content of `output.txt` instead using a simple copy paste.
+And then import that data back.
+
+```
+pdftk C:\Users\Sid\Desktop\doc.pdf update_info C:\Users\Sid\Desktop\doc_data.txt output C:\Users\Sid\Desktop\updated.pdf
+```
+If this does not update your bookmarks check that your `pdftk` version is greater than 1.45

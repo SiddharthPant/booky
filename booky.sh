@@ -7,7 +7,9 @@ pdf_data="${pdf%.*}""_data.txt"
 bkFile="$2"
 
 echo "Converting $bkFile to pdftk compatible format"
-python3 booky.py < "$bkFile" > bookmarks-pdftk-compatible.txt
+#python3 booky.py < "$bkFile" > bookmarks-pdftk-compatible.txt
+# my setting for alias
+python3 ~/booky/booky.py < "$bkFile" > bookmarks-pdftk-compatible.txt
 
 echo "Dumping pdf meta data..."
 pdftk "$pdf" dump_data_utf8 output "$pdf_data"

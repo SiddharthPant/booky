@@ -12,9 +12,20 @@ def increment_pagenum(mystr, num):
     else:
         print("regex_pattern.group(1) is", regex_pattern.group(1))
         new_page = int(regex_pattern.group(1))+num
+        replace_pattern = r'\g<1>'+re.escape(str(new_page))
+        print("replace_pattern -> value:", replace_pattern)
         #new_str = re.sub(r'(.*,\s*)\d+', r'\1 %s' % str(new_page), mystr)
-        #new_str = re.sub(r'(.*,\s*)\d+', r"\1 {}".format(str(new_page)), mystr) # not working either
-        new_str = re.sub(r'(.*,)\s*\d+', r'\1 %s' % str(new_page), mystr)
+        #new_str = re.sub(r'(.*,\s*)\d+', r"\1 {}".format(str(new_page)), mystr) # not working
+        #new_str = re.sub(r'(.*,)\s*\d+', r'\1 %s' % str(new_page), mystr)
+        #new_str = re.sub(r'(.*,)\s*\d+', replace_pattern, mystr) # progressing...
+        #new_str = re.sub(r'(.*,)\s*\d+', r'\g<1>%s' % str(new_page), mystr) # This works!!!
+### three lines come together ###
+        replace_pattern = r'\g<1>'+re.escape(str(new_page))
+        print("replace_pattern -> value:", replace_pattern)
+        new_str = re.sub(r'(.*,)\s*\d+', replace_pattern, mystr) # and this also works!!!
+### ###
+
+
         return new_str
 
 
@@ -29,8 +40,6 @@ def main():
         #lines[i] = lines[i].strip()
         #print("lines[i]'s value:", lines[i])
     print("lines's value:", lines)
-
-    print("start")
     for i in range(len(lines)):
         print("i -> value:", i)
         lines[i] = increment_pagenum(lines[i],1)

@@ -10,6 +10,7 @@ this script to enter bookmarks data in a simple format.
 * pdftk
 * dirname
 * basename
+* GNU sed
 
 ## Bookmark format
 * Every level starts with a `{` on a _separate line_.

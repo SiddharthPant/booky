@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Change to the directory of pdf file
+base=$(dirname $0)
 cd $(dirname "$1")
 pdf=$(basename "$1")
 pdf_data="${pdf%.*}""_data.txt"
@@ -8,7 +9,7 @@ EXTRACT_FILE=booky_bookmarks_extract
 bkFile="$2"
 
 echo "Converting $bkFile to pdftk compatible format"
-python3 booky.py < "$bkFile" > "$EXTRACT_FILE"
+python3 $base/booky.py < "$bkFile" > "$EXTRACT_FILE"
 
 echo "Dumping pdf meta data..."
 pdftk "$pdf" dump_data_utf8 output "$pdf_data"

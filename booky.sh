@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change to the directory of pdf file
-base=$(dirname $0)
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $(dirname "$1")
 pdf=$(basename "$1")
 pdf_data="${pdf%.*}""_data.txt"
@@ -16,7 +16,7 @@ else
 fi
 
 echo "Converting $bkFile to pdftk compatible format"
-python3 $base/booky.py < "$bkFile" > "$EXTRACT_FILE"
+python3 $SCRIPT_DIR/booky.py < "$bkFile" > "$EXTRACT_FILE"
 
 echo "Dumping pdf meta data..."
 pdftk "$pdf" dump_data_utf8 output "$pdf_data"

@@ -54,6 +54,17 @@ this script to enter bookmarks data in a simple format.
   ```
   ./booky.sh your_pdf_file.pdf your_text_file.txt
   ```
+
+If you add the `booky` directory to the environment PATH like:
+```
+export PATH=/path_to_the_booky:$PATH
+```
+then it can run from any directory:
+```
+  booky.sh your_pdf_file.pdf your_text_file.txt
+
+```
+
 This creats a new pdf file `your_pdf_file_new.pdf` with your bookmarks.
 
 This is going to work in *nix systems if instead you are on a Windows machine. Then first install `python3` and `pdftk` just use the `booky.py` file in the repo to convert `bkmrks.txt` to `pdftk` compatible format

@@ -67,7 +67,7 @@ then it can run from any directory:
 
 This creats a new pdf file `your_pdf_file_new.pdf` with your bookmarks.
 
-This is going to work in *nix* systems if instead you are on a Windows machine. Then first install `python3` and `pdftk` just use the `booky.py` file in the repo to convert `bkmrks.txt` to `pdftk` compatible format
+This is going to work in POSIX systems, but if instead you are on a Windows machine. Then first install `python3` and `pdftk` just use the `booky.py` file in the repo to convert `bkmrks.txt` to `pdftk` compatible format
 
     python3 booky.py < bkmrks.txt > output.txt
 
